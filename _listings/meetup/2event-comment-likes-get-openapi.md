@@ -1,12 +1,12 @@
 ---
 swagger: "2.0"
-x-collection-name: GIG & CROWD
+x-collection-name: Meetup
 x-complete: 0
 info:
-  title: GIGANDCROWD Post Gigme Likes Sync
+  title: Meetup Comment Likes
+  description: Api for listing likes of a given event comment
   version: 1.0.0
-  description: Post gigme likes sync.
-host: gigandcrowd.com
+host: api.meetup.com
 basePath: /
 schemes:
 - http
@@ -15,22 +15,23 @@ produces:
 consumes:
 - application/json
 paths:
-  /api/v1/gigme/likes/sync:
-    post:
-      summary: Post Gigme Likes Sync
-      description: Post gigme likes sync.
-      operationId: postApiV1GigmeLikesSync
-      x-api-path-slug: apiv1gigmelikessync-post
+  /2/event_comment_likes:
+    get:
+      summary: Comment Likes
+      description: Api for listing likes of a given event comment
+      operationId: events
+      x-api-path-slug: 2event-comment-likes-get
       parameters:
-      - in: header
-        name: Authorization
+      - in: query
+        name: comment_id
+        description: Return likes for a given comment_id
+        type: string
       responses:
         200:
           description: OK
       tags:
-      - Gigme
-      - Likes
-      - Sync
+      - Events
+      - Comments
 x-streamrank:
   polling_total_time_average: 0
   polling_size_download_average: 0
